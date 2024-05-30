@@ -1,20 +1,21 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
 // Define the Room class
 class Room {
 public:
-    std::string description;
+    string description;
     Room* north;
     Room* south;
     Room* east;
     Room* west;
 
-    Room(std::string desc) : description(desc), north(NULL), south(NULL), east(NULL), west(NULL) {}
+    Room( string desc) : description(desc), north(NULL), south(NULL), east(NULL), west(NULL) {}
 };
 
 // Function to handle player input
-void handleInput(std::string input, Room*& currentRoom) {
+void handleInput( string input, Room*& currentRoom) {
     if (input == "go north" && currentRoom->north != NULL) {
         currentRoom = currentRoom->north;
     }
@@ -28,7 +29,7 @@ void handleInput(std::string input, Room*& currentRoom) {
         currentRoom = currentRoom->west;
     }
     else {
-        std::cout << "You can't go that way.\n";
+         cout << "You can't go that way.\n";
     }
 }
 
@@ -43,9 +44,9 @@ int main() {
 
     // Game loop
     while (true) {
-        std::cout << currentRoom->description << "\n";
-        std::string input;
-        std::getline(std::cin, input);
+         cout << currentRoom->description << "\n";
+         string input;
+         getline( cin, input);
         handleInput(input, currentRoom);
     }
 
